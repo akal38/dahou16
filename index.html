@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>موقع الحاج عماد</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: radial-gradient(circle at center, #0f0f0f, #000);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid #0ff;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #0ff, 0 0 40px #f0f, 0 0 60px #0ff;
+      backdrop-filter: blur(10px);
+    }
+
+    h1, h2 {
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #fff;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 15px;
+      background: #f0f;
+      color: white;
+      box-shadow: 0 0 15px #f0f, 0 0 30px #0ff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #0ff;
+      color: black;
+      box-shadow: 0 0 25px #0ff, 0 0 40px #f0f;
+      transform: scale(1.05);
+    }
+
+    input {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      width: 90%;
+      max-width: 400px;
+      margin-top: 15px;
+    }
+
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #0ff, 0 0 25px #f0f;
+    }
+
+    #error {
+      color: #ff4c4c;
+      margin-top: 10px;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #0ff;
+      text-shadow: 0 0 5px #0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شاشة الترحيب -->
+  <div id="welcome" class="container">
+    <h1>👋 مرحبا بيكم في الموقع الخاص بالحاج عماد مروض الأفاعي</h1>
+  </div>
+
+  <!-- شاشة الوصف -->
+  <div id="description" class="container hidden">
+    <h2>📸 في هذا الموقع يوجد أبرز مقاطع وصور للحاج عماد</h2>
+    <button onclick="showPassword()">مواصلة</button>
+  </div>
+
+  <!-- شاشة كلمة المرور -->
+  <div id="passwordScreen" class="container hidden">
+    <h2>🔐 أدخل كلمة المرور للوصول إلى المقاطع</h2>
+    <input type="password" id="passwordInput" placeholder="أدخل كلمة المرور هنا">
+    <p>💡 التلميح: كلمة المرور هي "الحاج د.."</p>
+    <button onclick="checkPassword()">دخول</button>
+    <p id="error"></p>
+  </div>
+
+  <!-- شاشة عرض الفيديوهات -->
+  <div id="videos" class="container hidden">
+    <h2>🎥 أبرز مقاطع الحاج عماد</h2>
+    <div class="video-container">
+      <div>
+        <video controls>
+          <source src="video_2025-07-13_15-53-56.mp4" type="video/mp4">
+          المتصفح لا يدعم تشغيل الفيديو.
+        </video>
+        <p>🐍 فيديو 1: الحاج دحو حارس المرمى</p>
+      </div>
+
+      <div>
+        <video controls>
+          <source src="video_2025-07-13_15-53-33.mp4" type="video/mp4">
+          المتصفح لا يدعم تشغيل الفيديو.
+        </video>
+        <p>🧠 فيديو 2: الحاج دحو يتزحلق Viggle AI</p>
+      </div>
+
+      <div>
+        <video controls>
+          <source src="video_2025-07-13_15-59-25.mp4" type="video/mp4">
+          المتصفح لا يدعم تشغيل الفيديو.
+        </video>
+        <p>🏜️ فيديو 3: الحاج دحو يفعل العيب</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- التوقيع -->
+  <footer>
+    Created by عقال عبد الحق أمين
+  </footer>
+
+  <!-- سكريبت -->
+  <script>
+    // إظهار الشاشة الثانية بعد 3 ثوانٍ
+    setTimeout(() => {
+      document.getElementById("welcome").classList.add("hidden");
+      document.getElementById("description").classList.remove("hidden");
+    }, 3000);
+
+    // إظهار خانة كلمة المرور
+    function showPassword() {
+      document.getElementById("description").classList.add("hidden");
+      document.getElementById("passwordScreen").classList.remove("hidden");
+    }
+
+    // التحقق من كلمة المرور
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value.trim();
+      if (password === "الحاج دحو") {
+        document.getElementById("passwordScreen").classList.add("hidden");
+        document.getElementById("videos").classList.remove("hidden");
+      } else {
+        document.getElementById("error").innerText = "❌ كلمة المرور غير صحيحة.";
+      }
+    }
+  </script>
+
+</body>
+</html>
